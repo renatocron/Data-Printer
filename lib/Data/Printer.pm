@@ -662,7 +662,7 @@ sub GLOB {
 
     $string .= colored("$$item", $p->{color}->{'glob'});
 
-    my $extra = '';
+    my $extra = '';c
 
     # unfortunately, some systems (like Win32) do not
     # implement some of these flags (maybe not even
@@ -718,7 +718,7 @@ sub _class {
 
     # if the user specified a method to use instead, we do that
     if ( $p->{class_method} and my $method = $item->can($p->{class_method}) ) {
-        return $method->($item, $p);
+        return $method->($item, $p) if ref $method eq 'CODE';
     }
 
     my $string = '';
